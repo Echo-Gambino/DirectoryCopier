@@ -36,6 +36,9 @@
             this.output_button = new System.Windows.Forms.Button();
             this.quit_button = new System.Windows.Forms.Button();
             this.copy_button = new System.Windows.Forms.Button();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.test_label = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // input_label
@@ -84,6 +87,7 @@
             this.input_button.TabIndex = 4;
             this.input_button.Text = "Browse";
             this.input_button.UseVisualStyleBackColor = true;
+            this.input_button.Click += new System.EventHandler(this.input_button_Click);
             // 
             // output_button
             // 
@@ -93,6 +97,7 @@
             this.output_button.TabIndex = 5;
             this.output_button.Text = "Browse";
             this.output_button.UseVisualStyleBackColor = true;
+            this.output_button.Click += new System.EventHandler(this.output_button_Click);
             // 
             // quit_button
             // 
@@ -112,12 +117,27 @@
             this.copy_button.TabIndex = 7;
             this.copy_button.Text = "Copy";
             this.copy_button.UseVisualStyleBackColor = true;
+            this.copy_button.Click += new System.EventHandler(this.copy_button_Click);
+            // 
+            // folderBrowserDialog
+            // 
+            this.folderBrowserDialog.SelectedPath = "C:\\Users\\Henry\\Documents";
+            // 
+            // test_label
+            // 
+            this.test_label.AutoSize = true;
+            this.test_label.Location = new System.Drawing.Point(16, 115);
+            this.test_label.Name = "test_label";
+            this.test_label.Size = new System.Drawing.Size(35, 13);
+            this.test_label.TabIndex = 8;
+            this.test_label.Text = "label1";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.test_label);
             this.Controls.Add(this.copy_button);
             this.Controls.Add(this.quit_button);
             this.Controls.Add(this.output_button);
@@ -144,6 +164,9 @@
         private System.Windows.Forms.Button output_button;
         private System.Windows.Forms.Button quit_button;
         private System.Windows.Forms.Button copy_button;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Label test_label;
     }
 }
 
