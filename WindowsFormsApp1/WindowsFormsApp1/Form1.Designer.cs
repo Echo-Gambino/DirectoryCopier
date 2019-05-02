@@ -68,21 +68,26 @@
             // 
             // input_textBox
             // 
+            this.input_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.input_textBox.Location = new System.Drawing.Point(178, 9);
             this.input_textBox.Name = "input_textBox";
-            this.input_textBox.Size = new System.Drawing.Size(489, 20);
+            this.input_textBox.Size = new System.Drawing.Size(261, 20);
             this.input_textBox.TabIndex = 2;
             // 
             // output_textBox
             // 
+            this.output_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.output_textBox.Location = new System.Drawing.Point(178, 39);
             this.output_textBox.Name = "output_textBox";
-            this.output_textBox.Size = new System.Drawing.Size(489, 20);
+            this.output_textBox.Size = new System.Drawing.Size(261, 20);
             this.output_textBox.TabIndex = 3;
             // 
             // input_button
             // 
-            this.input_button.Location = new System.Drawing.Point(673, 9);
+            this.input_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.input_button.Location = new System.Drawing.Point(445, 9);
             this.input_button.Name = "input_button";
             this.input_button.Size = new System.Drawing.Size(115, 20);
             this.input_button.TabIndex = 4;
@@ -92,7 +97,8 @@
             // 
             // output_button
             // 
-            this.output_button.Location = new System.Drawing.Point(673, 39);
+            this.output_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.output_button.Location = new System.Drawing.Point(445, 39);
             this.output_button.Name = "output_button";
             this.output_button.Size = new System.Drawing.Size(115, 20);
             this.output_button.TabIndex = 5;
@@ -102,10 +108,12 @@
             // 
             // quit_button
             // 
-            this.quit_button.AutoSize = true;
-            this.quit_button.Location = new System.Drawing.Point(402, 86);
+            this.quit_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.quit_button.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.quit_button.Location = new System.Drawing.Point(307, 113);
+            this.quit_button.MinimumSize = new System.Drawing.Size(250, 25);
             this.quit_button.Name = "quit_button";
-            this.quit_button.Size = new System.Drawing.Size(385, 23);
+            this.quit_button.Size = new System.Drawing.Size(250, 26);
             this.quit_button.TabIndex = 6;
             this.quit_button.Text = "Quit";
             this.quit_button.UseVisualStyleBackColor = true;
@@ -113,10 +121,12 @@
             // 
             // copy_button
             // 
-            this.copy_button.AutoSize = true;
-            this.copy_button.Location = new System.Drawing.Point(12, 86);
+            this.copy_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.copy_button.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.copy_button.Location = new System.Drawing.Point(12, 113);
+            this.copy_button.MinimumSize = new System.Drawing.Size(250, 25);
             this.copy_button.Name = "copy_button";
-            this.copy_button.Size = new System.Drawing.Size(384, 23);
+            this.copy_button.Size = new System.Drawing.Size(250, 26);
             this.copy_button.TabIndex = 7;
             this.copy_button.Text = "Copy";
             this.copy_button.UseVisualStyleBackColor = true;
@@ -129,7 +139,7 @@
             // info_label
             // 
             this.info_label.AutoSize = true;
-            this.info_label.Location = new System.Drawing.Point(399, 70);
+            this.info_label.Location = new System.Drawing.Point(9, 94);
             this.info_label.Name = "info_label";
             this.info_label.Size = new System.Drawing.Size(52, 13);
             this.info_label.TabIndex = 9;
@@ -138,7 +148,7 @@
             // hyphen_checkBox
             // 
             this.hyphen_checkBox.AutoSize = true;
-            this.hyphen_checkBox.Location = new System.Drawing.Point(16, 66);
+            this.hyphen_checkBox.Location = new System.Drawing.Point(12, 74);
             this.hyphen_checkBox.Name = "hyphen_checkBox";
             this.hyphen_checkBox.Size = new System.Drawing.Size(170, 17);
             this.hyphen_checkBox.TabIndex = 10;
@@ -149,7 +159,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(569, 151);
             this.Controls.Add(this.hyphen_checkBox);
             this.Controls.Add(this.info_label);
             this.Controls.Add(this.copy_button);
@@ -160,6 +170,7 @@
             this.Controls.Add(this.input_textBox);
             this.Controls.Add(this.output_label);
             this.Controls.Add(this.input_label);
+            this.MinimumSize = new System.Drawing.Size(585, 190);
             this.Name = "Form1";
             this.Text = "Directory Copier";
             this.Load += new System.EventHandler(this.Form1_Load);
