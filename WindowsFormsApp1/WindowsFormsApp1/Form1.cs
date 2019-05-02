@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
+
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
@@ -50,17 +51,65 @@ namespace WindowsFormsApp1
 
         private void copy_button_Click(object sender, EventArgs e)
         {
-            String input_directory = input_textBox.Text;
-            String output_directory = output_textBox.Text;
+            String input_dir = input_textBox.Text;
+            String output_dir = output_textBox.Text;
+
+            test_label.Text = SearchDir.copyDirectories(input_dir, output_dir);
 
             // String directories = Path.GetFullPath(input_directory);
+            /*
             String[] directories = Directory.GetDirectories(input_directory);
             String proc_string = "";
             foreach (string s in directories)
                 proc_string = proc_string + "\n" + s;
             test_label.Text = proc_string;
+            */
 
+        }
+
+        private void output_textBox_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
+
+    public class SearchDir
+    {
+        private static String[] getDirectories(String path)
+        {
+            return Directory.GetDirectories(path);
+        }
+
+        private static String getFolderInPath(String path)
+        {
+            String[] folders = path.Split('\\');
+            int i = folders.Count();
+            return folders[i - 1];
+        }
+
+        public static String copyDirectories(String targ_path, String dest_path)
+        {
+            String new_folder_path = "";
+            String folder = SearchDir.getFolderInPath(targ_path);
+
+            new_folder_path = dest_path + "\\" + folder;
+
+            while (Directory.Exists(new_folder_path))
+            {
+                new_folder_path = new_folder_path + " Copy";
+            }
+
+            Directory.CreateDirectory(new_folder_path);
+
+            String[] all_sub_paths = Directory.GetDirectories(targ_path);
+            foreach (String sub_path in all_sub_paths)
+            {
+                SearchDir.copyDirectories(sub_path, new_folder_path);
+            }
+
+            return "";
+        }
+
+    }
+    
 }
