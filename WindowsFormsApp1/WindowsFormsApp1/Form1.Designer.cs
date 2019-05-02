@@ -38,7 +38,8 @@
             this.copy_button = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.test_label = new System.Windows.Forms.Label();
+            this.info_label = new System.Windows.Forms.Label();
+            this.hyphen_checkBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // input_label
@@ -78,7 +79,6 @@
             this.output_textBox.Name = "output_textBox";
             this.output_textBox.Size = new System.Drawing.Size(489, 20);
             this.output_textBox.TabIndex = 3;
-            this.output_textBox.TextChanged += new System.EventHandler(this.output_textBox_TextChanged);
             // 
             // input_button
             // 
@@ -102,7 +102,8 @@
             // 
             // quit_button
             // 
-            this.quit_button.Location = new System.Drawing.Point(402, 66);
+            this.quit_button.AutoSize = true;
+            this.quit_button.Location = new System.Drawing.Point(402, 86);
             this.quit_button.Name = "quit_button";
             this.quit_button.Size = new System.Drawing.Size(385, 23);
             this.quit_button.TabIndex = 6;
@@ -112,7 +113,8 @@
             // 
             // copy_button
             // 
-            this.copy_button.Location = new System.Drawing.Point(12, 66);
+            this.copy_button.AutoSize = true;
+            this.copy_button.Location = new System.Drawing.Point(12, 86);
             this.copy_button.Name = "copy_button";
             this.copy_button.Size = new System.Drawing.Size(384, 23);
             this.copy_button.TabIndex = 7;
@@ -124,21 +126,32 @@
             // 
             this.folderBrowserDialog.SelectedPath = "C:\\Users\\Henry\\Documents";
             // 
-            // test_label
+            // info_label
             // 
-            this.test_label.AutoSize = true;
-            this.test_label.Location = new System.Drawing.Point(16, 115);
-            this.test_label.Name = "test_label";
-            this.test_label.Size = new System.Drawing.Size(35, 13);
-            this.test_label.TabIndex = 8;
-            this.test_label.Text = "label1";
+            this.info_label.AutoSize = true;
+            this.info_label.Location = new System.Drawing.Point(399, 70);
+            this.info_label.Name = "info_label";
+            this.info_label.Size = new System.Drawing.Size(52, 13);
+            this.info_label.TabIndex = 9;
+            this.info_label.Text = "info_label";
+            // 
+            // hyphen_checkBox
+            // 
+            this.hyphen_checkBox.AutoSize = true;
+            this.hyphen_checkBox.Location = new System.Drawing.Point(16, 66);
+            this.hyphen_checkBox.Name = "hyphen_checkBox";
+            this.hyphen_checkBox.Size = new System.Drawing.Size(170, 17);
+            this.hyphen_checkBox.TabIndex = 10;
+            this.hyphen_checkBox.Text = "Replace Spaces With Hyphen";
+            this.hyphen_checkBox.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.test_label);
+            this.Controls.Add(this.hyphen_checkBox);
+            this.Controls.Add(this.info_label);
             this.Controls.Add(this.copy_button);
             this.Controls.Add(this.quit_button);
             this.Controls.Add(this.output_button);
@@ -167,7 +180,8 @@
         private System.Windows.Forms.Button copy_button;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.Label test_label;
+        private System.Windows.Forms.Label info_label;
+        private System.Windows.Forms.CheckBox hyphen_checkBox;
     }
 }
 

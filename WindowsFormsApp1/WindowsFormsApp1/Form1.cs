@@ -22,7 +22,29 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            String path = "";
+            String[] path_token = Directory.GetCurrentDirectory().Split('\\');
+            int max_depth = 2;
 
+            foreach (String token in path_token)
+            {
+                if (max_depth <= 0)
+                    break;
+                max_depth--;
+
+                if (path == "")
+                    path = token;
+                else
+                    path = path + "\\" + token;
+            }
+
+            if (path == "")
+                path = Directory.GetCurrentDirectory();
+
+            input_textBox.Text = path;
+
+            info_label.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+            info_label.Text = "";
         }
 
         private void quit_button_Click(object sender, EventArgs e)
@@ -46,6 +68,8 @@ namespace WindowsFormsApp1
                 textBox.Text = folderBrowserDialog.SelectedPath;
             }
 
+            user_input_Check(input_textBox.Text, output_textBox.Text);
+
             return;
         }
 
@@ -53,24 +77,30 @@ namespace WindowsFormsApp1
         {
             String input_dir = input_textBox.Text;
             String output_dir = output_textBox.Text;
+            String seperator = " ";
 
-            test_label.Text = SearchDir.copyDirectories(input_dir, output_dir);
+            if (!user_input_Check(input_dir, output_dir))
+                return;
 
-            // String directories = Path.GetFullPath(input_directory);
-            /*
-            String[] directories = Directory.GetDirectories(input_directory);
-            String proc_string = "";
-            foreach (string s in directories)
-                proc_string = proc_string + "\n" + s;
-            test_label.Text = proc_string;
-            */
+            if (hyphen_checkBox.Checked)
+                seperator = "-";
 
+            SearchDir.copyDirectories(input_dir, output_dir, seperator);
+            return;
         }
 
-        private void output_textBox_TextChanged(object sender, EventArgs e)
+        private bool user_input_Check(String input_dir, String output_dir)
         {
+            if (input_dir == "" || output_dir == "")
+            {
+                info_label.Text = "Cannot Copy: Please select both a target destination and a copy destination.";
+                return false;
+            }
 
+            info_label.Text = "";
+            return true;
         }
+
     }
 
     public class SearchDir
@@ -87,16 +117,34 @@ namespace WindowsFormsApp1
             return folders[i - 1];
         }
 
-        public static String copyDirectories(String targ_path, String dest_path)
+        private static String replaceSpacesInFolder(String folder_name)
+        {
+            String output = "";
+            String[] all_tokens = folder_name.Split(' ');
+
+            foreach (String token in all_tokens)
+            {
+                if (output == "")
+                    output = token;
+                else if (token != "")
+                    output = output + '-' + token;
+            }
+
+            return output;
+        }
+
+        public static void copyDirectories(String targ_path, String dest_path, String seperator)
         {
             String new_folder_path = "";
             String folder = SearchDir.getFolderInPath(targ_path);
+
+            folder = SearchDir.replaceSpacesInFolder(folder);
 
             new_folder_path = dest_path + "\\" + folder;
 
             while (Directory.Exists(new_folder_path))
             {
-                new_folder_path = new_folder_path + " Copy";
+                new_folder_path = new_folder_path + seperator + "Copy";
             }
 
             Directory.CreateDirectory(new_folder_path);
@@ -104,10 +152,10 @@ namespace WindowsFormsApp1
             String[] all_sub_paths = Directory.GetDirectories(targ_path);
             foreach (String sub_path in all_sub_paths)
             {
-                SearchDir.copyDirectories(sub_path, new_folder_path);
+                SearchDir.copyDirectories(sub_path, new_folder_path, seperator);
             }
 
-            return "";
+            return;
         }
 
     }
