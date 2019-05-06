@@ -103,8 +103,6 @@ namespace WindowsFormsApp1
             if (!user_input_Check(input_dir, output_dir))
                 return;
 
-            MessageBox.Show(hyphen_checkBox.Checked.ToString());
-
             // If hyphen check box was checked, then set the seperator to be "-" instead of " "
             if (hyphen_checkBox.Checked)
                 seperator = "-";
@@ -132,29 +130,11 @@ namespace WindowsFormsApp1
 
     public class SearchDir
     {
-        /* getDirectories
-         * 
-         * Argument:
-         *  String path : folder path that exits within the file system
-         * 
-         * Return:
-         *  String[]    : subdirectories from the path
-         * 
-         */
         private static String[] getDirectories(String path)
         {
             return Directory.GetDirectories(path);
         }
 
-        /* getFolderInPath
-         * 
-         * Argument:
-         *  String path : folder path that exits within the file system
-         *  
-         * Return:
-         *  String      : the folder name
-         * 
-         */
         private static String getFolderInPath(String path)
         {
             String[] folders = path.Split('\\');
@@ -162,17 +142,7 @@ namespace WindowsFormsApp1
             return folders[i - 1];
         }
 
-        /* replaceSpacesInFolder
-         * 
-         * Argument:
-         *  String folder_name  : the folder name from the directory
-         *  String seperator    : the character/string used to seperate the spaces
-         * 
-         * Return:
-         *  String output       : the folder name when spaces are replaced with the seperator
-         * 
-         */
-        private static String replaceSpacesInFolder(String folder_name, String seperator)
+        private static String replaceSpacesInFolder(String folder_name)
         {
             String output = "";
             String[] all_tokens = folder_name.Split(' ');
@@ -182,51 +152,29 @@ namespace WindowsFormsApp1
                 if (output == "")
                     output = token;
                 else if (token != "")
-                    output = output + seperator + token;
+                    output = output + '-' + token;
             }
 
             return output;
         }
 
-        /* copyDirectories
-         * 
-         * Argument:
-         *  String targ_path    : the target path that the program is going to copy
-         *  String dest_path    : the destination path that the copied structure is going to reside in
-         *  String seperator    : the seperator that is going to replace the spaces of the folder names
-         * 
-         * Return:
-         *  None
-         * 
-         * Recursively copy the target file structure from target path
-         * to the destination path, while ensuring that spaces are replaced with
-         * a seperator and a unique folder name is generated
-         * 
-         */
         public static void copyDirectories(String targ_path, String dest_path, String seperator)
         {
             String new_folder_path = "";
             String folder = SearchDir.getFolderInPath(targ_path);
 
-            // Get the processed folder name (when spaces are replaced with seperator)
-            folder = SearchDir.replaceSpacesInFolder(folder, seperator);
+            folder = SearchDir.replaceSpacesInFolder(folder);
 
-            // Construct the full folder path with the new folder name
             new_folder_path = dest_path + "\\" + folder;
 
-            // If the folder path exists, then add 'seperator + Copy' at the suffix until there isn't
             while (Directory.Exists(new_folder_path))
             {
                 new_folder_path = new_folder_path + seperator + "Copy";
             }
 
-            // Generate a new directory
             Directory.CreateDirectory(new_folder_path);
 
-            // Get all sub paths from the target path
             String[] all_sub_paths = Directory.GetDirectories(targ_path);
-
-            // For each sub path, call copyDirectories(...)
             foreach (String sub_path in all_sub_paths)
             {
                 SearchDir.copyDirectories(sub_path, new_folder_path, seperator);
