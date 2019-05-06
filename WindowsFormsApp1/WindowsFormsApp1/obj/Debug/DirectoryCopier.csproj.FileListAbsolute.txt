@@ -1,0 +1,9 @@
+C:\Users\Henry\Documents\IntroProject_C#\DirectoryCopier\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\DirectoryCopier.exe.config
+C:\Users\Henry\Documents\IntroProject_C#\DirectoryCopier\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\DirectoryCopier.exe
+C:\Users\Henry\Documents\IntroProject_C#\DirectoryCopier\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\DirectoryCopier.pdb
+C:\Users\Henry\Documents\IntroProject_C#\DirectoryCopier\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\Henry\Documents\IntroProject_C#\DirectoryCopier\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\DirectoryCopier.Properties.Resources.resources
+C:\Users\Henry\Documents\IntroProject_C#\DirectoryCopier\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\DirectoryCopier.csproj.GenerateResource.cache
+C:\Users\Henry\Documents\IntroProject_C#\DirectoryCopier\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\DirectoryCopier.csproj.CoreCompileInputs.cache
+C:\Users\Henry\Documents\IntroProject_C#\DirectoryCopier\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\DirectoryCopier.exe
+C:\Users\Henry\Documents\IntroProject_C#\DirectoryCopier\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\DirectoryCopier.pdb
