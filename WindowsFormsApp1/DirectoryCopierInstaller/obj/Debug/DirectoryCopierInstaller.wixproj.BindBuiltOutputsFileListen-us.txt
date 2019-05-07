@@ -1,6 +1,2 @@
-obj\Debug\Product.wixobj
 C:\Users\Henry\Documents\IntroProject_C#\DirectoryCopier\WindowsFormsApp1\DirectoryCopierInstaller\bin\Debug\en-us\DirectoryCopierInstaller.msi
 C:\Users\Henry\Documents\IntroProject_C#\DirectoryCopier\WindowsFormsApp1\DirectoryCopierInstaller\bin\Debug\en-us\DirectoryCopierInstaller.wixpdb
-obj\Debug\DirectoryCopierInstaller.wixproj.BindContentsFileListen-us.txt
-obj\Debug\DirectoryCopierInstaller.wixproj.BindOutputsFileListen-us.txt
-obj\Debug\DirectoryCopierInstaller.wixproj.BindBuiltOutputsFileListen-us.txt

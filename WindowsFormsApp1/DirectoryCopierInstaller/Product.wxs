@@ -1,22 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+  <!--
+  <?if $(var.Platform)=x64 ?>
+  <?define ProductCode = "{52C88BEF-25AD-4C04-A641-AE0F68FAA472}" ?>
+  <?else?>
+  <?define ProductCode = "{F0B4C4D9-CECF-47E2-95C9-F8AD24BBB907}" ?>
+  <?endif?>
+  -->
+  
+  <?define BuildVersion = 1.2.3.4 ?>
+  
+  <!-- define main product -->
 	<Product Id="*" 
-           Name="DirectoryCopierInstaller" 
-           Language="1033"
+           Name="DirectoryCopier.Installer" 
+           Language="!(loc.Language)"
            Version="1.0.0.0" 
            Manufacturer="ExampleManufacturer"
            UpgradeCode="2c0f3907-8361-492f-bd39-f6b13a884aea">
-		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+    
+    <!-- provide package details -->
+		<Package InstallerVersion="200" 
+             Compressed="yes" 
+             InstallScope="perMachine" 
+             Description="!(loc.Description)"
+             Keywords="!(loc.Keywords)"
+             Comments="!(loc.Comments)"
+             Languages="!(loc.Language)"
+             />
 
-		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MajorUpgrade DowngradeErrorMessage="A newer version of DirectoryCopier is already installed." />
+    
+    <!-- include .cab file into .msi file -->
     <MediaTemplate EmbedCab="yes"/>
     
-		<Feature Id="ProductFeature" Title="DirectoryCopierInstaller" Level="1">
+    <!-- Set icon.ico to a png image of a duck in DirectoryCopier -->
+    <Icon Id="icon.ico" SourceFile="$(var.DirectoryCopier.ProjectDir)\duck.png" />
+    <!-- Use the icon from icon.ico for this installer (shows up in add / remove programs) -->
+    <Property Id="APPPRODUCTICON">icon.ico</Property>
+
+    <!-- Create a basic UI for the installer (built-in for WiX) -->
+    <!-- <UIRef Id="WixUI_Minimal" /> -->
+    <UIRef Id="WixUI_InstallDir" />
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+
+    <!-- Set installer UI images -->
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\resources\License.rtf" />
+    <WixVariable Id="WixUIDialogBmp" Value="$(var.ProjectDir)\resources\Background.bmp" />
+    <WixVariable Id="WixUIBannerBmp" Value="$(var.ProjectDir)\resources\Banner.bmp" />
+
+    <!-- define components, shortcuts, files, etc. for installer -->
+		<Feature Id="ProductFeature" Title="DirectoryCopier.Installer" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
 		</Feature>
-	</Product>
 
-	<Fragment>
+	</Product>
+  
+  <Fragment>
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="ProgramFilesFolder">
 				<Directory Id="INSTALLFOLDER" Name="DirectoryCopierInstaller" />
@@ -24,11 +64,12 @@
 		</Directory>
 	</Fragment>
 
-	<Fragment>
+<Fragment>
 		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
       <Component Id="ProductComponent">
         <File Source="$(var.DirectoryCopier.TargetPath)" />
       </Component>
 		</ComponentGroup>
 	</Fragment>
+
 </Wix>
